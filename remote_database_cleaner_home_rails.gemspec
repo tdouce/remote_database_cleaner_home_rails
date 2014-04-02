@@ -14,8 +14,11 @@ Gem::Specification.new do |s|
   s.description = "TODO: Description of RemoteDatabaseCleanerHomeRails."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 4.0.4"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency 'rspec-rails'
+  s.add_development_dependency 'factory_girl_rails'
 end
