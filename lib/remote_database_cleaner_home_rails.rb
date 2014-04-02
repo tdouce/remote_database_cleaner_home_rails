@@ -1,0 +1,4 @@
+require "remote_database_cleaner_home_rails/engine"
+
+module RemoteDatabaseCleanerHomeRails
+end
