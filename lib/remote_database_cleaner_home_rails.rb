@@ -17,18 +17,26 @@ module RemoteDatabaseCleanerHomeRails
   end
 
   def self.enable!
-    @enable = ON 
+    self.enable = ON 
   end
 
   def self.disable!
-    @enable = OFF 
+    self.enable = OFF 
   end
 
   def self.enabled?
-    @enable == ON 
+    enable == ON 
   end
 
   def self.reset
-    @enable = OFF 
+    self.enable = OFF 
+  end
+
+  def self.enable=(boolean)
+    @enable = boolean
+  end
+
+  def self.enable
+    @enable
   end
 end
