@@ -3,7 +3,7 @@ require "remote_database_cleaner_home_rails/engine"
 module RemoteDatabaseCleanerHomeRails
   OFF     = false
   ON      = true
-  @enable = OFF
+  @@enable = OFF
 
   mattr_accessor :skip_before_filter
   mattr_accessor :strategy
@@ -33,10 +33,10 @@ module RemoteDatabaseCleanerHomeRails
   end
 
   def self.enable=(boolean)
-    @enable = boolean
+    @@enable = boolean
   end
 
   def self.enable
-    @enable
+    @@enable
   end
 end
