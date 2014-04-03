@@ -35,7 +35,6 @@ describe RemoteDatabaseCleanerHomeRails::HomeController do
     end
 
     it 'should return status code 200 when RemoteDatabaseCleanerHomeRails is enabled' do
-      controller.stub(:factory)
       RemoteDatabaseCleanerHomeRails.enable!
       post :create, {}
       expect(response.status).to eq(200)
