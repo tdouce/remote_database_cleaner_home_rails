@@ -20,5 +20,10 @@ describe RemoteDatabaseCleanerHomeRails::HomeController do
       expect(DatabaseCleaner).to receive(:clean)
       post :create, {}
     end
+
+    it 'should skip :authentication and :another_authentication methods defined in ApplicationController' do
+      post :create, {}
+      expect(response).to_not redirect_to("/401.html")
+    end
   end
 end
