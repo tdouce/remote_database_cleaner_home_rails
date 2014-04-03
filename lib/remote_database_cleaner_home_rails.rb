@@ -6,6 +6,11 @@ module RemoteDatabaseCleanerHomeRails
   @enable = OFF
 
   mattr_accessor :skip_before_filter
+  mattr_accessor :strategy
+
+  def self.strategy
+    @@strategy.to_sym
+  end
 
   def self.skip_before_filters
     skip_before_filter.present? ? [skip_before_filter].flatten.map {|a| a.to_sym} : nil

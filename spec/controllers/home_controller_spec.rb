@@ -14,7 +14,10 @@ describe RemoteDatabaseCleanerHomeRails::HomeController do
 
   routes { RemoteDatabaseCleanerHomeRails::Engine.routes }
 
-  before { RemoteDatabaseCleanerHomeRails.enable! }
+  before do 
+    RemoteDatabaseCleanerHomeRails.enable! 
+    RemoteDatabaseCleanerHomeRails.strategy = :truncation
+  end
 
   describe '#create' do
     it 'should clean database with strategy truncation' do
@@ -38,6 +41,12 @@ describe RemoteDatabaseCleanerHomeRails::HomeController do
       RemoteDatabaseCleanerHomeRails.enable!
       post :create, {}
       expect(response.status).to eq(200)
+    end
+
+    it 'should be able to configure cleaning strategy' do
+      RemoteDatabaseCleanerHomeRails.strategy = :transaction
+      expect(DatabaseCleaner).to receive(:strategy=).with(:transaction)
+      post :create, {}
     end
   end
 end
