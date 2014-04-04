@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     remote_database_cleaner_home_rails (0.0.1)
-      rails (~> 4.0.4)
+      rails (~> 4.0.2)
 
 GEM
   remote: https://rubygems.org/
