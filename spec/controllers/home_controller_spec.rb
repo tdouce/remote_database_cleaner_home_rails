@@ -19,34 +19,34 @@ describe RemoteDatabaseCleanerHomeRails::HomeController do
     RemoteDatabaseCleanerHomeRails.strategy = :truncation
   end
 
-  describe '#create' do
+  describe '#clean' do
     it 'should clean database with strategy truncation' do
       expect(DatabaseCleaner).to receive(:strategy=).with(:truncation)
       expect(DatabaseCleaner).to receive(:clean)
-      post :create, {}
+      post :clean, {}
     end
 
     it 'should skip :authentication and :another_authentication methods defined in ApplicationController' do
-      post :create, {}
+      post :clean, {}
       expect(response).to_not redirect_to("/401.html")
     end
 
     it 'should return status code 403 when RemoteDatabaseCleanerHomeRails is not enabled' do
       RemoteDatabaseCleanerHomeRails.disable!
-      post :create, {}
+      post :clean, {}
       expect(response.status).to eq(403)
     end
 
     it 'should return status code 200 when RemoteDatabaseCleanerHomeRails is enabled' do
       RemoteDatabaseCleanerHomeRails.enable!
-      post :create, {}
+      post :clean, {}
       expect(response.status).to eq(200)
     end
 
     it 'should be able to configure cleaning strategy' do
       RemoteDatabaseCleanerHomeRails.strategy = :transaction
       expect(DatabaseCleaner).to receive(:strategy=).with(:transaction)
-      post :create, {}
+      post :clean, {}
     end
   end
 end

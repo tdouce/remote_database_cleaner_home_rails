@@ -1,3 +1,3 @@
 RemoteDatabaseCleanerHomeRails::Engine.routes.draw do
-  resources :home, only: [:create]
+  post '/home/clean' => 'home#clean'
 end

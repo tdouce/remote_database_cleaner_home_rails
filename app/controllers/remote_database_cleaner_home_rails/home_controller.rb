@@ -3,7 +3,7 @@ module RemoteDatabaseCleanerHomeRails
 
     skip_before_filter *RemoteDatabaseCleanerHomeRails.skip_before_filter
     
-    def create 
+    def clean 
       if RemoteDatabaseCleanerHomeRails.enabled?
         DatabaseCleaner.strategy = strategy 
         DatabaseCleaner.clean
