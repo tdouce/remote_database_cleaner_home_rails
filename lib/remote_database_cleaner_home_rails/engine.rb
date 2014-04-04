@@ -8,5 +8,14 @@ module RemoteDatabaseCleanerHomeRails
       g.assets false
       g.helper false
     end
+
+    config.remote_database_cleaner_home_rails = ActiveSupport::OrderedOptions.new
+
+    initializer "remote_database_cleaner_home_rails.environment" do |app|
+      options = app.config.remote_database_cleaner_home_rails
+      options.skip_before_filter ||= nil
+      options.enable ||= false 
+      options.strategy ||= :truncation
+    end
   end
 end

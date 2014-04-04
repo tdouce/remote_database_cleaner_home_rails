@@ -3,40 +3,42 @@ require "remote_database_cleaner_home_rails/engine"
 module RemoteDatabaseCleanerHomeRails
   OFF     = false
   ON      = true
-  @@enable = OFF
 
-  mattr_accessor :skip_before_filter
-  mattr_accessor :strategy
-
-  def self.strategy
-    @@strategy.to_sym
+  def self.strategy=(strategy)
+    config.strategy = strategy
   end
 
-  def self.skip_before_filters
-    skip_before_filter.present? ? [skip_before_filter].flatten.map {|a| a.to_sym} : nil
+  def self.strategy
+    config.strategy
+  end
+
+  def self.skip_before_filter
+    filters = config.skip_before_filter
+    filters.present? ? [filters].flatten.map(&:to_sym) : nil
+  end
+
+  def self.config(config = RemoteDatabaseCleanerHomeRails::Engine.config.remote_database_cleaner_home_rails)
+    config
+  end
+
+  def self.configure
+    yield config
   end
 
   def self.enable!
-    self.enable = ON 
+    config.enable = ON 
   end
 
   def self.disable!
-    self.enable = OFF 
+    config.enable = OFF 
   end
 
   def self.enabled?
-    enable == ON 
+    config.enable == ON
   end
 
   def self.reset
-    self.enable = OFF 
-  end
-
-  def self.enable=(boolean)
-    @@enable = boolean
-  end
-
-  def self.enable
-    @@enable
+    config.enable = OFF
+    config.skip_before_filter = nil
   end
 end
