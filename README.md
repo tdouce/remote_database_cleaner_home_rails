@@ -1,57 +1,11 @@
 # RemoteDatabaseCleanerRails
 
-## Installation
+[database_cleaner](https://github.com/bmabey/database_cleaner) for [Software Oriented Architecture](http://en.wikipedia.org/wiki/Service-oriented_architecture) (SOA). Clean
+database remotely when used in conjunction with [remote_database_cleaner_home_rails](https://github.com/tdouce/remote_database_cleaner_home_rails).
 
-Add this line to your application's Gemfile:
+## Getting Started
 
-```ruby
-group :test do
-  gem 'remote_database_cleaner_home_rails'
-end
-```
-
-
-And then execute:
-
-    $ bundle
-
-
-## Usage
-
-Configure in `config/environments/*.rb`
-
-Activate remote_database_cleaner_home_rails to run in the environments in which it is intended to
-run. For example, if remote_database_cleaner_home_rails is included in `group
-:test` (most common), then activate in `config/environments/test.rb`
-
-```ruby
-YourApplication::Application.configure do
-  ...
-  config.remote_database_cleaner_home_rails.enable = true
-  ...
-end
-```
-
-Configure in `config/routes.rb`
-
-```ruby
-YourApplication::Application.routes.draw do
-  if defined?(RemoteDatabaseCleanerHomeRails::Engine)
-    mount RemoteDatabaseCleanerHomeRails::Engine, at: '/remote_factory_girl' 
-  end
-end
-```
-
-Configure in `config/initializers/remote_database_cleaner_home_rails.rb` 
-
-Specify any methods that should be skipped in `RemoteDatabaseCleanerHomeRails::HomeController`. 
-
-```ruby
-RemoteDatabaseCleanerHomeRails.configure do |config|
-  config.skip_before_filter = [:authenticate, :some_other_method]
-  config.strategy = :truncation
-end if defined?(RemoteDatabaseCleanerHomeRails)
-```
+See [GETTING STARTED](https://github.com/tdouce/remote_database_cleaner/wiki/Getting-Started)
 
 ## Run tests
 
