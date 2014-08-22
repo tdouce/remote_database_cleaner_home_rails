@@ -1,4 +1,5 @@
 # RemoteDatabaseCleanerRails
+[![Build Status](https://travis-ci.org/tdouce/remote_database_cleaner_home_rails.svg)](https://travis-ci.org/tdouce/remote_database_cleaner_home_rails)
 
 [database_cleaner](https://github.com/bmabey/database_cleaner) for [Service Oriented Architecture](http://en.wikipedia.org/wiki/Service-oriented_architecture) (SOA). Clean
 database remotely when used in conjunction with [remote_database_cleaner_home_rails](https://github.com/tdouce/remote_database_cleaner_home_rails).
