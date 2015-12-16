@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    remote_database_cleaner_home_rails (0.0.1)
+    remote_database_cleaner_home_rails (0.0.2)
       rails
 
 GEM
