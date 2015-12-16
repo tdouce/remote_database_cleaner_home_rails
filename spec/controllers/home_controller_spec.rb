@@ -10,12 +10,12 @@ class DatabaseCleaner
   end
 end
 
-describe RemoteDatabaseCleanerHomeRails::HomeController do
+describe RemoteDatabaseCleanerHomeRails::HomeController, type: :controller do
 
   routes { RemoteDatabaseCleanerHomeRails::Engine.routes }
 
-  before do 
-    RemoteDatabaseCleanerHomeRails.enable! 
+  before do
+    RemoteDatabaseCleanerHomeRails.enable!
     RemoteDatabaseCleanerHomeRails.strategy = :truncation
   end
 
